@@ -10,6 +10,18 @@ export async function getFeriadosOfTheYearByMonths() {
 
   const res = await fetch(`https://nolaborables.com.ar/api/v2/feriados/${actualYear}`)
   const data = await res.json()
+
+  if (actualYear === "2023") {
+    const newFeriado = {
+      dia: 7,
+      id: "feriado-extra-globant",
+      info: "",
+      mes: 8,
+      motivo: "Feriado extra globant",
+      tipo: "temporal"
+    }
+    data.push(newFeriado)
+  }
   return data
 
 }
